@@ -1,0 +1,30 @@
+{
+  "name": "shoppingcart_project",
+  "version": "1.0.0",
+  "description": "web api cw",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isurudha/shoppingCart_API.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "web",
+    "api"
+  ],
+  "author": "Isuru, Isanka, Ravindu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isurudha/shoppingCart_API/issues"
+  },
+  "homepage": "https://github.com/Isurudha/shoppingCart_API#readme"
+}
