@@ -7,6 +7,7 @@ const home = require("./routes/home");
 const carts = require("./routes/cart");
 const address = require("./routes/userAddress");
 
+<<<<<<< HEAD
  mongoose
  .connect(process.env.DATABASE_HOST + process.env.DATABASE_NAME,{
      useNewUrlParser: true,
@@ -18,6 +19,17 @@ const address = require("./routes/userAddress");
  .catch((err) =>
  console.log("Error has occurred while connecting to DB : ", err)
  );
+=======
+mongoose
+.connect(process.env.DATABASE_HOST + process.env.DATABASE_NAME,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("Connected to db Successfuly...!"))
+.catch((err) =>
+console.log("Error has occurred while connecting to DB : ", err)
+);
+>>>>>>> e49a01f8557ae7d3f5dcabde09565eced9856630
 
 const app = express();
 const PORT = 5000;
