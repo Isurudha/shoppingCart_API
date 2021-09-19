@@ -53,5 +53,34 @@ router.put("/:id", async (req, res) => {
       return res.status(500).send(err.message);
     }
   });
+
+  router.post("/", async (req, res) => {
+    if (
+      !req.body.productCode ||
+      req.body.productCode == "" ||
+      !req.body.title ||
+      !req.body.description ||
+      !req.body.price ||
+      !req.body.category
+    ) {
+      return res.status(400).send("Please fill the all values");
+    }
+    let newproduct = new Product({
+      productCode: req.body.productCode,
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      category: req.body.category,
+      manufacturer: req.body.manufacturer,
+      imagePath: req.body.imagePath,
+      available: req.body.available,
+    });
+    try {
+      newproduct = await newproduct.save();
+      return res.status(200).send(newproduct);
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
+  });
   
   module.exports = router;
