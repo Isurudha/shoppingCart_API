@@ -3,6 +3,21 @@ const Cart = require("../models/cart");
 const Product = require("../models/product");
 const router = express.Router();
 
+//get all - Ishanka
+router.get("/", async (req, res) => {
+  try {
+    let cart = await Cart.find();
+    if (!cart) {
+      return res
+        .status(404)
+        .send({ meesage: "The cart you request does not exist" });
+    }
+    return res.send(cart);
+  } catch (ex) {
+    return res.status(500).send({ message: ex.message });
+  }
+});
+
   //get a cart details for specific user
 router.get("/:id", async (req, res) => {
     try {

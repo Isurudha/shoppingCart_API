@@ -2,6 +2,16 @@ const express = require("express");
 const Product = require("../models/product");
 const router = express.Router();
 
+//get all the products - Ishanka
+router.get("/", async (req, res) => {
+  try {
+    let products = await Product.find();
+    return res.status(200).send(products);
+  } catch (ex) {
+    return res.status(500).send(ex.message);
+  }
+});
+
 //get a one product with id
 router.get("/:id", async (req, res) => {
     console.log(req.params.id);
