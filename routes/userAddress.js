@@ -27,4 +27,32 @@ router.get("/:user", async (req, res) => {
     }
   });
 
+  //add a new adress
+router.post("/", async (req, res) => {
+  if (
+    !req.body.user ||
+    !req.body.addressLine01 ||
+    !req.body.addressLine02 ||
+    !req.body.city ||
+    !req.body.state ||
+    !req.body.zip
+  ) {
+    return res.status(400).send("Please fill the all values");
+  }
+  let newaddress = new Address({
+    user : req.body.user ,
+    addressLine01: req.body.addressLine01 ,
+    addressLine02:req.body.addressLine02,
+    city:req.body.city, 
+    state:req.body.state,
+    zip : req.body.zip
+  });
+  try {
+    newaddress = await newaddress.save();
+    return res.status(200).send(newaddress);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
+
   module.exports = router;
