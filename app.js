@@ -7,6 +7,12 @@ const home = require("./routes/home");
 const carts = require("./routes/cart");
 const address = require("./routes/userAddress");
 
+process.on('uncaughtException', (err) => {
+  console.log('Unhandler Exception! Shutting Down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
  mongoose
  .connect(process.env.DATABASE_HOST + process.env.DATABASE_NAME,{
      useNewUrlParser: true,
