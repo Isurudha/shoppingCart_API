@@ -7,17 +7,15 @@ const home = require("./routes/home");
 const carts = require("./routes/cart");
 const address = require("./routes/userAddress");
 
-// mongoose
-// .connect(process.env.DATABASE_HOST + process.env.DATABASE_NAME,{
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true,
-// })
-// .then(() => console.log("Connected to db Successfuly...!"))
-// .catch((err) =>
-// console.log("Error has occurred while connecting to DB : ", err)
-// );
+mongoose
+.connect(process.env.DATABASE_HOST + process.env.DATABASE_NAME,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("Connected to db Successfuly...!"))
+.catch((err) =>
+console.log("Error has occurred while connecting to DB : ", err)
+);
 
 const app = express();
 const PORT = 5000;
