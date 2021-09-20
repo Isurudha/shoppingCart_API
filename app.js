@@ -6,6 +6,8 @@ const products = require("./routes/products");
 const home = require("./routes/home");
 const carts = require("./routes/cart");
 const address = require("./routes/userAddress");
+const users = require("./routes/user");
+const auth = require("./routes/authentication");
 
 process.on('uncaughtException', (err) => {
   console.log('Unhandler Exception! Shutting Down...');
@@ -34,6 +36,8 @@ app.use("/", home);
 app.use("/api/products", products);
 app.use("/api/carts", carts);
 app.use("/api/address", address);
+app.use("/api/users", users);
+app.use("/api/auth", auth);
 
 
 //listed to port

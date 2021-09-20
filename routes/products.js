@@ -83,4 +83,19 @@ router.put("/:id", async (req, res) => {
     }
   });
   
+  //delete
+router.delete("/:id", async (req, res) => {
+  try {
+    let product = await Product.findOneAndDelete({ _id: req.params.id });
+    console.log(product);
+    if (!product)
+      return res
+        .status(404)
+        .send("The Product you request to delete does not exist in DB");
+
+    return res.status(200).send(product);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+});
   module.exports = router;

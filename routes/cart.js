@@ -43,7 +43,7 @@ router.get("/items/:id", async (req, res) => {
       return res.status(500).send({message : ex.message});
     }
   });
-  
+
 //add a new Cart
   router.post("/", async (req, res) => {
     console.log(req.body.user, req.body.productId);
@@ -122,6 +122,22 @@ router.post("/:id/:user", async (req, res) => {
     return res.send(cart);
   } catch (err) {
     return res.status(500).send(err.message);
+  }
+});
+
+//Delete full cart
+router.delete("/:user", async (req, res) => {
+  try {
+    console.log(req.params.user);
+    let cart = await Cart.deleteOne({ user: req.params.user });
+    console.log(cart);
+    if (!cart)
+      return res
+        .status(404)
+        .send("The Product you request to delete does not exist in DB");
+    return res.send(cart);
+  } catch (err) {
+    return res.status(500).send({ err: err.meesage });
   }
 });
 
